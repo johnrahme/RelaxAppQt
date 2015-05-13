@@ -4,5 +4,7 @@
         <file>MainForm.ui.qml</file>
         <file>Player.qml</file>
         <file>Audio/ScottyPirate.mp3</file>
+        <file>Start.qml</file>
+        <file>SlideMenu.qml</file>
     </qresource>
 </RCC>

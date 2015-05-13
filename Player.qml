@@ -6,58 +6,42 @@ import QtQuick.Layouts 1.0
 import QtMultimedia 5.0
 import QtQuick.Controls.Styles 1.3
 
-Item {
+Rectangle {
     property alias mediaPlayer: mediaPlayer
+    property alias info_L: info_L
+    property alias positionSlider: positionSlider
+    property alias playButton: playButton
 
     MediaPlayer {
         id: mediaPlayer
         autoPlay: false
-        readonly property string title: !!metaData.author && !!metaData.title
-                                        ? qsTr("%1 - %2").arg(metaData.author).arg(metaData.title)
-                                        : metaData.author || metaData.title || source
+        source: "/Audio/ScottyPirate.mp3"
+        onSourceChanged: {
+            console.log(mediaPlayer.source.toString)
+        }
     }
     ColumnLayout {
         id: column
+        anchors.bottomMargin: parent.height*0.1
         anchors.margins: 9
         anchors.fill: parent
 
-        Label {
-            id: infoLabel
-
-            elide: Qt.ElideLeft
+        Text {
+            id: info_L
             verticalAlignment: Qt.AlignVCenter
-            text: mediaPlayer.errorString || mediaPlayer.source
-            Layout.minimumHeight: infoLabel.implicitHeight
+            text: "The title!"
+            Layout.minimumHeight: info_L.implicitHeight
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
 
         RowLayout {
             id: row
-
-            Button {
-                id: openButton
-
-                text: qsTr("...")
-                Layout.preferredWidth: openButton.implicitHeight
-                onClicked: fileDialog.open()
-
-                FileDialog {
-                    id: fileDialog
-
-                    folder : musicUrl
-                    title: qsTr("Open file")
-                    nameFilters: [qsTr("MP3 files (*.mp3)"), qsTr("All files (*.*)")]
-                    onAccepted: mediaPlayer.source = fileDialog.fileUrl
-                }
-            }
-
             Button {
                 id: playButton
-
+                text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "Pause" : "Play"
                 enabled: mediaPlayer.hasAudio
-                Layout.preferredWidth: playButton.implicitHeight
-                iconSource: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "qrc:/pause-16.png" : "qrc:/play-16.png"
+                //iconSource: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "qrc:/pause-16.png" : "qrc:/play-16.png"
                 onClicked: mediaPlayer.playbackState === MediaPlayer.PlayingState ? mediaPlayer.pause() : mediaPlayer.play()
             }
 
