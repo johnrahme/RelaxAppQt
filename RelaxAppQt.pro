@@ -13,7 +13,8 @@ DATA_FILES = $$PWD/Audio/ScottyPirate.mp3
 
 RESOURCES += qml.qrc \
     pirate.qrc \
-    images.qrc
+    images.qrc \
+    audio.qrc
 
 OTHER_FILES = \
             Audio/ScottyPirate.mp3
@@ -25,7 +26,8 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 DISTFILES += \
-    Audio/ScottyPirate.mp3
+    Audio/ScottyPirate.mp3 \
+    Audio/ProgLiggande.m4a
 
 ios {
 message(For iOS!!)

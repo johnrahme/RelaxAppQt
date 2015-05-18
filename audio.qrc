@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Audio/ProgLiggande.m4a</file>
+        <file>Audio/ProgSittande.m4a</file>
+    </qresource>
+</RCC>

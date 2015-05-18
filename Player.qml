@@ -16,9 +16,6 @@ Rectangle {
         id: mediaPlayer
         autoPlay: false
         source: "/Audio/ScottyPirate.mp3"
-        onSourceChanged: {
-            console.log(mediaPlayer.source.toString)
-        }
     }
     ColumnLayout {
         id: column
@@ -28,11 +25,10 @@ Rectangle {
 
         Text {
             id: info_L
-            verticalAlignment: Qt.AlignVCenter
+            anchors.centerIn: parent
+            font.underline: true
             text: "The title!"
-            Layout.minimumHeight: info_L.implicitHeight
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            font.pixelSize: parent.width*0.05
         }
 
         RowLayout {
@@ -44,6 +40,13 @@ Rectangle {
                 //iconSource: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "qrc:/pause-16.png" : "qrc:/play-16.png"
                 onClicked: mediaPlayer.playbackState === MediaPlayer.PlayingState ? mediaPlayer.pause() : mediaPlayer.play()
             }
+            Button {
+                id: restartButton
+                text: "Restart"
+                enabled: mediaPlayer.hasAudio
+                //iconSource: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "qrc:/pause-16.png" : "qrc:/play-16.png"
+                onClicked: mediaPlayer.seek(0);
+            }
 
             Slider {
                 id: positionSlider
@@ -52,6 +55,8 @@ Rectangle {
                 maximumValue: mediaPlayer.duration
 
                 property bool sync: false
+                updateValueWhileDragging: true
+
 
                 onValueChanged: {
                     if (!sync)
@@ -61,9 +66,9 @@ Rectangle {
                 Connections {
                     target: mediaPlayer
                     onPositionChanged: {
-                        positionSlider.sync = true
-                        positionSlider.value = mediaPlayer.position
-                        positionSlider.sync = false
+                            positionSlider.sync = true
+                            positionSlider.value = mediaPlayer.position
+                            positionSlider.sync = false
                     }
                 }
                 style: SliderStyle {
@@ -81,6 +86,7 @@ Rectangle {
                             implicitWidth: 34
                             implicitHeight: 34
                             radius: 12
+
                         }
                     }
             }

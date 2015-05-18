@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>Images/menu_icon.png</file>
+        <file>Images/relaxSitting.png</file>
+        <file>Images/relaxStanding.png</file>
+        <file>Images/relaxLying.png</file>
     </qresource>
 </RCC>

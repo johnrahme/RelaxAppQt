@@ -9,6 +9,8 @@ Item {
     id: slide_I_
     property bool menu_shown: false
     property double slide_size: 0.3
+    property alias start_B: start_B
+    property alias media_B: media_B
     Rectangle {
         id: slide_menu_
         width: parent.width *slide_size; height: parent.height
@@ -17,6 +19,10 @@ Item {
         anchors.top: parent.top
         color: "grey"
 
+        MouseArea {
+            id: underlaying_MA_
+            anchors.fill: parent
+        }
 
 
         //opacity: parent.menu_shown ? 1 : 0
@@ -27,19 +33,39 @@ Item {
             x: 0
             Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
         }
-
+         //START OF CONTENT//
         Button {
-            text: "test"
+            id: start_B
+            anchors.horizontalCenter:parent.horizontalCenter
+            anchors.topMargin: parent.width/5
+            anchors.top: parent.top
+            width: parent.width*0.6
+            height: parent.width*0.3
+            text: "Övningar"
+            visible: true
+        }
+        Button {
+            anchors.topMargin: parent.width/5
+            anchors.horizontalCenter:parent.horizontalCenter
+            anchors.top: start_B.bottom
+            id: media_B
+            width: parent.width*0.6
+            height: parent.width*0.3
+            text: "Nu spelas"
+            visible: true
         }
 
-        Text {
-            id: slide_T_
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width * 0.1
-            //text: "Slide Menu Rules"
-            font.pixelSize: 20
+        ListView {
+            anchors.fill: parent
+            model: MenuModel{}
+            delegate: Text{
+                text: name
+            }
+            visible: false
         }
+
+        //END OF CONTENT//
+
     }
 
     MouseArea {
