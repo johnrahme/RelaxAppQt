@@ -11,6 +11,15 @@ Rectangle {
     property alias info_L: info_L
     property alias positionSlider: positionSlider
     property alias playButton: playButton
+    property alias translate: translate
+    property string title: "Spelare"
+
+    transform: Translate {
+        id: translate
+        x: parent.width
+        Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+    }
+
 
     MediaPlayer {
         id: mediaPlayer

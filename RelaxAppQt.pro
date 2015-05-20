@@ -33,5 +33,4 @@ ios {
 message(For iOS!!)
 data.files = Audio
 QMAKE_BUNDLE_DATA += data
-
 }

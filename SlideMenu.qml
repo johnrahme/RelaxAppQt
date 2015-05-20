@@ -77,34 +77,12 @@ Item {
     }
 
     //The menu Toggler
-    Rectangle {
-        id: slide_button_
-        width: parent.width*0.16; height: parent.width*0.08
-        anchors.top: parent.top
-        anchors.left: parent.left
-        scale: m_a_.pressed ? 0.95 : 1
-        MouseArea {
-            id: m_a_
-            anchors.fill: parent
-            onClicked: slide_I_.toggleMenu()
-        }
-        Image {
-            anchors.fill: parent
-            source: "/Images/menu_icon.png"
-        }
-
-        transform: Translate {
-            id: slide_button_translate_
-            x: 0
-            Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
-        }
-    }
 
     function toggleMenu()
     {
         slide_translate_.x = slide_I_.menu_shown ? 0 : slide_I_.width * slide_size
-        slide_button_translate_.x = slide_I_.menu_shown ? 0 : slide_I_.width * slide_size
         slide_I_.menu_shown = !slide_I_.menu_shown;
     }
+
 
 }

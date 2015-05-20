@@ -12,43 +12,98 @@ ApplicationWindow {
     height: Screen.height
     visible: true
 
+    property var currentVisible: start_V_
+
+
+    Banner{
+        id: banner
+        anchors.top : parent.top
+        width: parent.width
+        height: parent.height*0.1
+        m_a_.onClicked: menu_V_.toggleMenu()
+        nav_T_.text: getNav()
+    }
+
     Start {
         id:start_V_
-        anchors.fill: parent
+        anchors.top: banner.bottom
+        width: parent.width
+        height: parent.height*0.9
         visible: true
         sitting_MA_.onClicked: {
             hideShow(player_V_)
             player_V_.info_L.text = "Sittande relaxövning"
             player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgSittande.m4a"
+            //delay(500, function(){player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgSittande.m4a"})
         }
         lying_MA_.onClicked: {
             hideShow(player_V_)
             player_V_.info_L.text = "Liggande relaxövning"
             player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgLiggande.m4a"
+            //delay(500, function(){player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgLiggande.m4a"})
+        }
+        transform: Translate {
+            id: translate
+            x: 0
+            Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
         }
     }
 
     Player{
         id:player_V_
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height*0.9
+        anchors.top: banner.bottom
         mediaPlayer.source: baseDir+"/Audio/ProgLiggande.m4a"
         info_L.text: "Liggande relaxövning"
         visible: false
         playButton.enabled: mediaPlayer.hasAudio ? true:false
+
         }
     SlideMenu {
         id: menu_V_
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height*0.9
+        anchors.top: banner.bottom
         start_B.onClicked: {hideShow(start_V_); toggleMenu();}
         media_B.onClicked: {hideShow(player_V_); toggleMenu();}
     }
 
+
+    Timer {
+        id: timer
+    }
+
+
     //---Functions, should be in c++ Prop---
 
     function hideShow(qml){
-        start_V_.visible = false;
-        player_V_.visible = false;
+        start_V_.visible = true;
+
+        player_V_.visible = true;
         qml.visible = true;
+        currentVisible.translate.x = the_App_.width;
+        currentVisible = qml;
+        qml.translate.x = 0;
+
+
+
     }
 
+    // A function to delay time
+    function delay(delayTime, cb) {
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
+
+    function getNav(){
+        if(menu_V_.menu_shown){
+            return "Meny"
+        }
+
+        else
+            return currentVisible.title
+    }
 }

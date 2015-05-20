@@ -9,5 +9,6 @@
         <file>Audio/ProgLiggande.m4a</file>
         <file>Audio/ProgSittande.m4a</file>
         <file>MenuModel.qml</file>
+        <file>Banner.qml</file>
     </qresource>
 </RCC>

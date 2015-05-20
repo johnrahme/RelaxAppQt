@@ -4,6 +4,14 @@ Rectangle {
 
     property alias sitting_MA_: sitting_MA_
     property alias lying_MA_: lying_MA_
+    property alias translate: translate
+    property string title: "Start"
+
+    transform: Translate {
+        id: translate
+        x: 0
+        Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+    }
 
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
