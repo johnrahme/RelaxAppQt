@@ -12,6 +12,11 @@ ApplicationWindow {
     height: Screen.height
     visible: true
 
+    color: "white"
+    Image{
+    anchors.fill: parent
+    source: "Images/background.jpg"
+    }
     property var currentVisible: start_V_
 
 

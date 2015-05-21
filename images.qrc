@@ -4,5 +4,9 @@
         <file>Images/relaxSitting.png</file>
         <file>Images/relaxStanding.png</file>
         <file>Images/relaxLying.png</file>
+        <file>Images/background.jpg</file>
+        <file>Images/player_pause.png</file>
+        <file>Images/player_play.png</file>
+        <file>Images/player_restart.png</file>
     </qresource>
 </RCC>

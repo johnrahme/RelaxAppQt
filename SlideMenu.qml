@@ -8,7 +8,7 @@ import QtMultimedia 5.3
 Item {
     id: slide_I_
     property bool menu_shown: false
-    property double slide_size: 0.3
+    property double slide_size: 0.5
     property alias start_B: start_B
     property alias media_B: media_B
     Rectangle {

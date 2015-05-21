@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     QString workingDir = "file://"+QDir::currentPath();
     //If on android use this instead
-    //workingDir = "";
+    workingDir = "";
 
     engine.rootContext()->setContextProperty("baseDir", workingDir);
     engine.rootContext()->setContextProperty(QStringLiteral("url"), commandLineUrl);

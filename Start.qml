@@ -7,10 +7,14 @@ Rectangle {
     property alias translate: translate
     property string title: "Start"
 
+    Image{
+    anchors.fill: parent
+    source: "Images/background.jpg"
+    }
     transform: Translate {
         id: translate
         x: 0
-        Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+        Behavior on x { NumberAnimation { duration: 700; easing.type: Easing.OutQuad } }
     }
 
     Text {
