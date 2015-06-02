@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
     const QStringList arguments = QCoreApplication::arguments();
     const QUrl commandLineUrl = arguments.size() > 1 ? QUrl::fromLocalFile(arguments.at(1)) : QUrl();
 
-    QString workingDir = "file://"+QDir::currentPath();
+    //QString workingDir = "file://"+QDir::currentPath();
     //If on android use this instead
-    //workingDir = "";
+    QString workingDir = "";
 
     engine.rootContext()->setContextProperty("baseDir", workingDir);
     engine.rootContext()->setContextProperty(QStringLiteral("url"), commandLineUrl);

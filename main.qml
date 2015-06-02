@@ -40,13 +40,13 @@ ApplicationWindow {
         sitting_MA_.onClicked: {
             hideShow(player_V_)
             player_V_.info_L.text = "Sittande relaxövning"
-            player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgSittande.m4a"
+            player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgSittande.mp3"
             //delay(500, function(){player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgSittande.m4a"})
         }
         lying_MA_.onClicked: {
             hideShow(player_V_)
             player_V_.info_L.text = "Liggande relaxövning"
-            player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgLiggande.m4a"
+            player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgLiggande.mp3"
             //delay(500, function(){player_V_.mediaPlayer.source  = baseDir+"/Audio/ProgLiggande.m4a"})
         }
         transform: Translate {
@@ -62,7 +62,7 @@ ApplicationWindow {
         width: parent.width
         height: parent.height-banner.height
         anchors.top: banner.bottom
-        mediaPlayer.source: baseDir+"/Audio/ProgLiggande.m4a"
+        mediaPlayer.source: baseDir+"/Audio/ProgLiggande.mp3"
         info_L.text: "Liggande relaxövning"
         visible: false
         playButton.enabled: mediaPlayer.hasAudio ? true:false

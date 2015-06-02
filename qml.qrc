@@ -3,11 +3,8 @@
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
         <file>Player.qml</file>
-        <file>Audio/ScottyPirate.mp3</file>
         <file>Start.qml</file>
         <file>SlideMenu.qml</file>
-        <file>Audio/ProgLiggande.m4a</file>
-        <file>Audio/ProgSittande.m4a</file>
         <file>MenuModel.qml</file>
         <file>Banner.qml</file>
     </qresource>

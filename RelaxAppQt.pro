@@ -14,7 +14,8 @@ DATA_FILES = $$PWD/Audio/ScottyPirate.mp3
 RESOURCES += qml.qrc \
     pirate.qrc \
     images.qrc \
-    audio.qrc
+    audioliggande.qrc \
+    audiosittande.qrc
 
 OTHER_FILES = \
             Audio/ScottyPirate.mp3
