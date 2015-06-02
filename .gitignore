@@ -1,9 +1,11 @@
 *.pro.user
-*.pro.user*
+*.pro.user.*
 debug/
 release/
 *.autosave
 android/gradle.properties
 android/local.properties
-
+RelaxAppQt.pro.user
+RelaxAppQt.pro.user.af0807a
+RelaxAppQt.pro.user.b2408dd
 *.user
