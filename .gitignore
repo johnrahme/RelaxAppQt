@@ -5,3 +5,5 @@ release/
 *.autosave
 android/gradle.properties
 android/local.properties
+
+*.user
