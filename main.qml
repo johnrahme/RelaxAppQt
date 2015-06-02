@@ -18,22 +18,24 @@ ApplicationWindow {
     source: "Images/background.jpg"
     }
     property var currentVisible: start_V_
-
+    property int diagonal: Math.sqrt(Math.pow(height, 2)+Math.pow(width, 2))
 
     Banner{
         id: banner
         anchors.top : parent.top
         width: parent.width
-        height: parent.height*0.1
+        height: diagonal*0.09
         m_a_.onClicked: menu_V_.toggleMenu()
         nav_T_.text: getNav()
+        z:+1
     }
 
     Start {
         id:start_V_
+        opacity: menu_V_.menu_shown ? 0.5:1
         anchors.top: banner.bottom
         width: parent.width
-        height: parent.height*0.9
+        height: parent.height-banner.height
         visible: true
         sitting_MA_.onClicked: {
             hideShow(player_V_)
@@ -56,8 +58,9 @@ ApplicationWindow {
 
     Player{
         id:player_V_
+        opacity: menu_V_.menu_shown ? 0.5:1
         width: parent.width
-        height: parent.height*0.9
+        height: parent.height-banner.height
         anchors.top: banner.bottom
         mediaPlayer.source: baseDir+"/Audio/ProgLiggande.m4a"
         info_L.text: "Liggande relaxövning"
@@ -68,7 +71,7 @@ ApplicationWindow {
     SlideMenu {
         id: menu_V_
         width: parent.width
-        height: parent.height*0.9
+        height: parent.height-banner.height
         anchors.top: banner.bottom
         start_B.onClicked: {hideShow(start_V_); toggleMenu();}
         media_B.onClicked: {hideShow(player_V_); toggleMenu();}

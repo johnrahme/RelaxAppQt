@@ -4,6 +4,7 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 import QtMultimedia 5.3
+import QtGraphicalEffects 1.0
 
 Item {
     id: slide_I_
@@ -11,6 +12,12 @@ Item {
     property double slide_size: 0.5
     property alias start_B: start_B
     property alias media_B: media_B
+    property int number_of_menu_buttons:2
+    property int button_height: (0.5/number_of_menu_buttons)*height
+    property int button_padding: (0.5/(number_of_menu_buttons+1))*height
+    property int button_width: width * 0.5*0.5
+    property int button_text_size: button_width/5
+
     Rectangle {
         id: slide_menu_
         width: parent.width *slide_size; height: parent.height
@@ -18,6 +25,15 @@ Item {
         visible: true
         anchors.top: parent.top
         color: "grey"
+        RectangularGlow{
+            opacity: menu_shown ? 1:0
+            anchors.fill: parent
+            glowRadius: 30
+            color: "black"
+            cornerRadius: 0
+            z: -1
+            Behavior on opacity {NumberAnimation {duration: 300}}
+        }
 
         MouseArea {
             id: underlaying_MA_
@@ -37,21 +53,29 @@ Item {
         Button {
             id: start_B
             anchors.horizontalCenter:parent.horizontalCenter
-            anchors.topMargin: parent.width/5
+            anchors.topMargin: button_padding
             anchors.top: parent.top
-            width: parent.width*0.6
-            height: parent.width*0.3
-            text: "Övningar"
+            width: button_width
+            height: button_height
+            Text{
+                anchors.centerIn: parent
+                text: "Övningar"
+                font.pixelSize: button_text_size
+            }
             visible: true
         }
         Button {
-            anchors.topMargin: parent.width/5
+            id: media_B
+            anchors.topMargin: button_padding
             anchors.horizontalCenter:parent.horizontalCenter
             anchors.top: start_B.bottom
-            id: media_B
-            width: parent.width*0.6
-            height: parent.width*0.3
-            text: "Nu spelas"
+            width: button_width
+            height: button_height
+            Text{
+                anchors.centerIn: parent
+                text: "Nu spelas"
+                font.pixelSize: button_text_size
+            }
             visible: true
         }
 

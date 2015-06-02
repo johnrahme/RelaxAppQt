@@ -1,15 +1,18 @@
 import QtQuick 2.0
-
+import QtGraphicalEffects 1.0
 Rectangle {
 
     property alias sitting_MA_: sitting_MA_
     property alias lying_MA_: lying_MA_
     property alias translate: translate
     property string title: "Start"
+    property int diagonal: Math.sqrt(Math.pow(height, 2)+Math.pow(width, 2))
 
+    Behavior on opacity {NumberAnimation {duration: 300}}
     Image{
-    anchors.fill: parent
-    source: "Images/background.jpg"
+        id: image
+        anchors.fill: parent
+        source: "Images/background.jpg"
     }
     transform: Translate {
         id: translate

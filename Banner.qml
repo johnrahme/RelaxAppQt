@@ -1,5 +1,4 @@
 import QtQuick 2.0
-
 Rectangle {
     color:"black"
     property alias m_a_: m_a_
@@ -14,7 +13,7 @@ Rectangle {
 
     Rectangle {
         id: slide_button_
-        width: parent.width*0.20; height: parent.height*0.7
+        width: parent.height*1.5; height: parent.height*0.7
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: parent.width*0.05

@@ -14,6 +14,8 @@ Rectangle {
     property alias translate: translate
     property string title: "Spelare"
 
+    Behavior on opacity {NumberAnimation {duration: 300}}
+
     Image{
         anchors.fill: parent
         source: "Images/background.jpg"
